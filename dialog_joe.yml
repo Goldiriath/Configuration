@@ -1,0 +1,188 @@
+# Citizens ID
+id: 3
+
+# NPC name
+name: '&9Farmer Joe'
+
+# When the citizen is clicked, the following dialogs will be checked from top
+# to bottom until a dialog can be triggered. If none can, nothing happens.
+click:
+- quest_ask
+- quest_wheat_has
+- quest_wheat_nohas
+- quest_eggs_has
+- quest_eggs_nohas
+- quest_milk_has
+- quest_milk_nohas
+- quest_passive_cake
+- quest_passive
+- passive
+
+# Options
+options:
+    helpme:
+        yes:
+            display: '&2Yes, of course!'
+            dialog: quest_start
+        no:
+            display: '&4No, I''m busy'
+            dialog: quest_busy
+
+# Dialogs
+dialogs:
+
+    # Ask new players if they want a quest
+    quest_ask:
+        requirements:
+        - flag joepassive == 0
+        - -quest test started
+        script:
+        - '0 flag joepassive add 3'
+        - '0 out joe_hello Hello, I''m Joe, the local farmer!'
+        - '30 out joe_helpme Do you want to help me bake a cake?'
+        - '15 note You are about to accept a quest'
+        - '0 option helpme'
+
+    # The player's busy
+    quest_busy:
+        script:
+        - '0 out joe_no No? Oh, That''s quite alright.'
+        # Show the passive 2 times, then ask again
+        - '0 flag joepassive add 2'
+    
+    # The player wants a quest
+    quest_start:
+        script:
+        - '0 out joe_great Great! Thanks so much for helping'
+        - '5 quest test entry'
+        - '0 note You just started the test quest!'
+        - '35 zap quest_items'
+    
+    # List quest items
+    quest_items:
+        script:
+        - '0 out joe_items_wheat First, I''ll need some wheat to form the foundation of my cake'
+        - '30 out joe_items_wheat2 I think about 3 wheat will do'
+        - '30 out joe_items_eggs Then, I need you to get me 2 eggs'
+        - '30 out joe_items_milk Lastly, I''ll need to get a bucket of milk, to finish my cake'
+        - '35 out joe_eggs Alright, first, grab me 3 wheat'
+        - '30 out joe_eggs2 Come back to me once you have the materials.'
+        - '0 quest test wheat'
+    
+    ##
+    ## Wheat
+    ##
+    
+    # The player comes back with wheat
+    quest_wheat_has:
+        requirements:
+        - quest test wheat
+        - item wheat 3
+        script:
+        - '0 item remove wheat 3'
+        - '5 out joe_wheat Great work!'
+        - '40 out joe_wheat2 Now, please fetch me 2 eggs'
+        - '0 quest test eggs'
+        
+    # The player is still looking for wheat
+    quest_wheat_nohas:
+        requirements:
+        - quest test wheat
+        script:
+        - '0 out joe_wheat_talk Talk to me again when you have 3 wheat'
+    
+    ##
+    ## Eggs
+    ##
+    
+    # The player comes back with eggs
+    quest_eggs_has:
+        requirements:
+        - quest test eggs
+        - item egg 2
+        script:
+        - '0 item remove egg 2'
+        - '0 out joe_eggs Yes, Finally!'
+        - '10 out joe_eggs2 Now, to top it off, please get me a bucket of milk.'
+        - '10 out joe_eggs_talk Talk to me again when you have that.'
+        - '0 quest test milk'
+        
+    # The player is still looking for eggs
+    quest_eggs_nohas:
+        requirements:
+        - quest test eggs
+        script:
+        - '0 out joe_eggs_talk Talk to me again when you have two eggs.'
+
+    ##
+    ## Milk Bucket
+    ##
+
+    # The player comes back with eggs
+    quest_milk_has:
+        requirements:
+        - quest test milk
+        - item milk_bucket 1
+        script:
+        - '0 item remove milk_bucket 1'
+        - '0 out joe_milk Yes, all of the ingredients of my cake are here!'
+        - '10 zap quest_thanks'
+        
+    # The player is still looking for eggs
+    quest_milk_nohas:
+        requirements:
+        - quest test milk
+        script:
+        - '0 out joe_eggs_talk Talk to me again when you have a bucket of milk.'
+    
+    ##
+    ## Thank you
+    ##
+    
+    # Give a player items and complete the quest
+    # Note that this dialog is never triggered by on-click,
+    # since it isn't listed in 'click' above.
+    quest_thanks:
+        script:
+        - '0 out joe_thanks As a token of appreciation, I''d like to give you this amulet.'
+        - '30 out joe_thanks It was once my mother''s, and has thusfar brought me great strength.'
+        - '50 item add _joe_amulet 1'
+        - '10 note Amulet of strength was added to your inventory'
+        - '20 xp add 2000'
+        - '20 note You gained 2000 XP'
+        - '20 money add 150'
+        - '20 skillpoint 2'
+        - '20 quest test complete'
+    
+    ##
+    ## Passives
+    ##
+    
+    # Give the player cake every 3 times they talk to the farmer
+    quest_passive_cake:
+        requirements:
+        - quest test complete
+        - flag joecake > 2
+        # joecakedelay is a _unique_ flag id that's used to store the current time
+        - delay joecakedelay 30
+        script:
+        - '0 flag joecake reset'
+        - '0 out joe_quest_passive Hello, thank you for helping!'
+        - '20 out joe_quest_cake Here''s some cake, because you helped me bake my first!'
+        - '10 item add cake 1'
+        - '0 note The farmer hands you a cake'
+
+    # Tell players to come back later if they're not getting cake yet
+    quest_passive:
+        requirements:
+        - quest test complete
+        script:
+        - '0 flag joecake add 1'
+        - '0 out joe_quest_passive Hello, thank you for helping!'
+        - '20 out joe_quest_passive2 If you come back later, I might have some cake for you'
+
+    # This will trigger for 2 times when the player said 'no thanks' on the quest offer'
+    passive:
+        script:
+        - '0 flag joepassive remove 1'
+        - '5 out joe_hello Hello, I''m, Joe, the farmer!'
