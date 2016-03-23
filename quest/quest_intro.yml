@@ -15,18 +15,19 @@ stages:
                 - location goldiriath:1362:114:1028 2
     ground_flour_start:
         script: 
-        - 0 out innkeeper innkeeper_ground_floor o good youre awake,
-        - 20 out innkeeper innkeeper_ground_floor2 come and talk to me
+        - '0 out innkeeper innkeeper_ground_floor o good you''re awake,'
+        - '20 out innkeeper innkeeper_ground_floor2 come and talk to me'
         - 0 zap ground_flour_stasis
     ground_flour_stasis:
         triggers:
             try_to_leave:
-                location goldiriath:1368:114:1038 3
+                - location goldiriath:1368:114:1038 3
     try_to_leave:
         script:
-        - 0 command /tp <player> 1362:114:1028
-        - 5 out innkeeper innkeeper_try_to_leave come talk to me before leaving
+        - 0 command /tp <player> 1362 114 1028
+        - '5 out innkeeper innkeeper_try_to_leave come talk to me before leaving'
         - 0 zap ground_flour_stasis
     hay:      
     gear:
     complete:
+        - xp add 50
