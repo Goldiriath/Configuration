@@ -2,7 +2,7 @@
 id: 15
 
 # NPC name
-name: Blacksmith
+name: '&6Blacksmith'
 
 click:
     - gear_dislike
@@ -12,88 +12,88 @@ click:
 options:
     reason:
         sent:
-            display: 'Innkeeper'
+            display: '&2innkeeper'
             dialog: response_innkeeper
         gear:
-            display: 'gear'
+            display: '&2gear'
             dialog: response_gear
     reason_dislike:
         sent:
-            display: 'Innkeeper'
+            display: '&2innkeeper'
             dialog: response_innkeeper_dislike
         gear:
-            display: 'gear'
+            display: '&2gear'
             dialog: response_gear
     looking:
         sarcastic:
-            display: 'what else?'
+            display: '&6what else?'
             dialog: response_sarcastic
         respectfull:
-            display: 'yes sir'
+            display: '&2yes sir'
             dialog: response_gear
     looking_dislike:
         sarcastic:
-            display: 'what else?'
+            display: '&6what else?'
             dialog: response_sarcastic_dislike
         respectfull:
-            display: 'yes sir'
+            display: '&2yes sir'
             dialog: response_gear
     gear_choice:
         sword:
-            display: 'sword'
+            display: '&2sword'
             dialog: response_sword
         bow:
-            display: 'bow'
+            display: '&2bow'
             dialog: response_bow
 dialogs:
     gear_dislike:
         requirements: 
-            - quest intro gear
-            - flag innkeeper_dislike > 0
+        - quest intro gear
+        - flag innkeeper_dislike > 0
         script:
-            - '0 out blacksmith_hello  Hello there, what can i do for you?
-            - 5 option reason
+        - '0 out blacksmith_hello  Hello there, what can i do for you?'
+        - 5 option reason_dislike
     gear:
         requirements: 
-            - quest intro gear
+        - quest intro gear
         script:
-            - '0 out blacksmith_hello  Hello there, what can i do for you?
-            - 5 option reason
+        - '0 out blacksmith_hello  Hello there, what can i do for you?'
+        - 5 option reason
     response_innkeeper_dislike:
         script:
-            - '0 me The innkeeper sent me.'
-            - '20 out blacksmith_innkeeper And I think that means that you are looking for some gear?'
-            - 0 option looking_dislike   
+        - '0 me The innkeeper sent me.'
+        - '20 out blacksmith_innkeeper And I think that means that you are looking for some gear?'
+        - 0 option looking_dislike   
     response_innkeeper:
         script:
-            - '0 me The innkeeper sent me.'
-            - '20 out blacksmith_innkeeper And I think that means that you are looking for some gear?'
-            - 0 option looking   
+        - '0 me The innkeeper sent me.'
+        - '20 out blacksmith_innkeeper And I think that means that you are looking for some gear?'
+        - 0 option looking   
     response_sarcastic_dislike:
         script:
-            - '0 me what else?'
-            - '20 out response_sarcastic_dislike I can see why the Innkeeper doesn''t like you, but I have some gear left over for people such as yourself...'
-            - 0 zap dislike_gear
+        - '0 me what else?'
+        - '20 out response_sarcastic_dislike I can see why the Innkeeper doesn''t like you, but I have some gear left over for people such as yourself...'
+        - 0 zap dislike_gear
     response_sarcastic:
         script:
-            - '0 me what else?'
-            - '20 out response_sarcastic Hmmm, I would appreciate it if you could be a little less sarcastic, but I have some gear left over for people such as yourself...'
-            - 0 zap dislike_gear
+        - '0 me what else?'
+        - '20 out response_sarcastic Hmmm, I would appreciate it if you could be a little less sarcastic, but I have some gear left over for people such as yourself...'
+        - 0 zap dislike_gear
     dislike_gear:
         script:
-            - '20 out dislike_gear I found a crappy bow and a rusty sword, you can chose which piece of trash you want.'
-            - option gear_choice
+        - '20 out dislike_gear I found a crappy bow and a rusty sword, you can chose which piece of trash you want.'
+        - 0 option gear_choice
     response_gear:
         script: 
-            - '0 out like_gear  I think that i have some gear that you can take. I found a bow and an old sword, you can chose which of those you want.'
-            - 0 option gear_choice
+        - '0 out like_gear  I think that I might have some gear that you can take. I found a bow and an old sword, you can chose which of those you want.'
+        - 0 option gear_choice
     response_bow:
         script:
-            - '0 me I would prefer the bow'
-            - 0 item add _default_bow
-            - 0 quest intro complete
+        - '0 me I would prefer the bow'
+        - 0 item add _default_bow
+        - 0 quest intro complete
     response_sword:
         script:
-            - '0 me I would prefer the sword'
-            - 0 item add _battered_wooden_sword
-            - 0 quest intro complete
+        - '0 me I would prefer the sword'
+        - 0 item add _battered_wooden_sword
+        - 0 quest intro complete
