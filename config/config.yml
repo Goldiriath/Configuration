@@ -1,0 +1,64 @@
+#
+# Goldiriath pre-alpha core configuration.
+#
+
+# Death
+death:
+
+    # The amount of money that is required to keep inventory
+    money_cost: 50
+
+    # Additional post-cost multipier
+    money_multiplier: 0.9
+
+
+# Defaults
+default:
+    money: 10
+    health: 100
+    mana: 100
+    skillpoints: 0
+    xp: 0
+
+# Dialogs
+dialog:
+
+    # Timeout before a dialog is rendered ended
+    timeout: 600
+
+    # Timeout before another dialog can be started
+    click_threshold: 100
+
+# Sign based mob spawner
+mobspawner:
+    enabled: true
+
+    # Development mode
+    # When this is set to true, all mobspawns will be disabled and presented as signs
+    dev_mode: true
+
+    # Default maximum amount of mobs a spawner can spawn
+    max_mobs: 5
+
+    # Minimum delay after a spawn in ticks
+    # 600 ticks: 600 / 20 ticks = 30 seconds
+    time_threshold: 600
+
+    # The radius in which a player must reside in order to start spawning mobs
+    # Set to 0 to always spawn.
+    radius_threshold: 50
+
+# Metacycler
+metacycler:
+    enabled: true
+
+    # The tool for block and painting meta
+    meta_tool: STICK
+
+    # The tool for biome meta
+    biome_tool: BLAZE_ROD
+
+
+# If enabled, dispensers will never run out
+infinite_dispenser:
+    enabled: true

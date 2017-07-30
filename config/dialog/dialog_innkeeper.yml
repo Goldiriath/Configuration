@@ -1,0 +1,78 @@
+# citiznes ID
+id: 14
+
+# NPC name
+name: Innkeeper
+
+click:
+    - quest_trigger
+    - quest_has_hay_nice
+    - quest_has_hay_mean
+    - quest_no_has_hay
+
+options:
+    payment:
+        no_money:
+            display: '&4no money.'
+            dialog: response_nice
+        why:
+            display: '&6why?'
+            dialog: response_explain
+    payment2:
+        understood:
+            display: '&2No money'
+            dialog: response_nice
+        angry:
+            display: '&4Angry!'
+            dialog: response_mean
+dialogs:
+    quest_trigger:
+        requirements:
+            - flag innkeeper_converstion == 0
+        script:
+            - 0 flag innkeeper_converstion add 1
+            - '0 out innkeeper_awake Glad your finnaly awake,'
+            - '20 out innkeeper_brought_in a fisherman from the town to the southeast of us brought you in a couple of days ago.'
+            - '20 out innkeeper_repaid After you have repaid me for the room you used, you should go and see him.'
+            - 0 option payment
+    response_nice:
+        script:
+            - '0 me But I have no money'
+            - '40 out innkeeper_start_quest Thats alright the room wasn''t that expensive anyway.'
+            - '40 out innkeeper_start_quest2 If you fetch me some hay, you're free to go.'
+            - 5 quest intro hay
+    response_explain:
+        script:
+            - '0 me Why would I have to pay you?'
+            - '40 out innkeeper_explain You didn''t think I would let you stay for free did you?'
+            - 0 option payment2
+    response_mean:
+        script:
+            - '0  me &4This is rediculous! I didn''t choose to stay here so why should I pay?'
+            - 0 flag innkeeper_dislike add 1
+            - '40 out Innkeeper_response_mean you wouldn''t need that much to pay me anyway, since I stuffed you in the cheapest room I have. And now go fetch me some hay, I'm not going to let you leave without payment.'
+            - 5 quest intro hay
+    quest_has_hay_nice:
+        requirements:
+            - quest intro hay
+            - item hay_block
+            - flag innkeeper_dislike == 0
+        script:
+            - '0 out innkeeper_hayblock thank you for the hay.'
+            - '40 out innkeeper_gear you should get some starter gear before leaving town'
+            - '40 out innkeeper_send the blacksmith might have some if you mention that I send you.'
+            - 5 quest intro gear
+    quest_has_hay_mean:
+        requirements:
+            - quest intro hay
+            - item hay_block
+            - flag innkeeper_dislike == 1
+        script:
+            - '0 out innkeeper_hay_mean Good you actually did what I told you'
+            - '40 out innkeeper_gear_mean Go to the blacksmith to get some gear. Unless you would like to die of course'
+            - 5 quest intro gear
+    quest_no_has_hay:
+        requirements:
+            - quest intro hay
+        script:
+            - '0 out innkeeper_no_hay You can get some hay from the stable, it shouldn't be that hard to find. And now go I have other matters to attend too.'

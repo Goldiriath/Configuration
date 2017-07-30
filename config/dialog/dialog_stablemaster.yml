@@ -1,0 +1,44 @@
+# citiznes ID
+id: 13
+
+# NPC name
+name: Stablemaster
+
+click:
+    - hello
+    - hello2
+ 
+options: 
+    day:
+        good:
+            display: '&2good'
+            dialog: response_good
+        bad:
+            display: '&4bad'
+            dialog: response_bad
+dialogs:
+    hello:
+        requirements:
+            - quest intro hay
+        script:
+            - '0 out stablemaster_hello Hello there, what can I do for you?'
+            - '40 me The innkeeper asked me to get some hay for him'
+            - 40 'out stablemaster_hay alright he''ll pay for it later, here you go'
+            - '40 me thank you very much'
+            - 5 item add hay_block 1
+    hello2:
+        script:
+            - '0 out stablemaster_hello2 good day, how are you?'
+            - option day
+    response_good:
+        script:
+            - '0 me &2I''m good thank you for asking, how are you?'
+            - '40 out stablemaster_good thats good to hear dear boy, im good aswell'
+            - '40 out stablemaster_busy I sadly have no time right now to continue this conversation'
+            - '40 out stablemaster_bye I hope you have a good day'
+    response_bad:
+        script:
+            - '0 me &2I''m not that doing so well actually'
+            - '40 out stablemaster_bad thats too bad'
+            - '40 out steblemaster_busy2 im sorry but im too busy to hear about your troubles at the moment'
+            - '40 out stablemaster_bye2 I hope you feel better soon'
