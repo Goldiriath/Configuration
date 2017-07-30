@@ -1,0 +1,17 @@
+# Multiplier which defines how much lower this shop will buy items for.
+exchange: 0.8
+products:
+- 1 LOG 5
+- 5 LOG 30
+# This shop will only buy planks from players (and never sell them).
+# Note: The value of planks is 200, but the actual buying price is 0.8 * 200 = 160!
+- 10 WOOD 200 buy
+- 1 STONE 2
+- 5 STONE 15
+- 1 DIRT 1
+- 5 DIRT 8
+- 1 SAND 2
+- 5 SAND 12
+# This shop will only sell diamonds to players (and never buy them).
+- 1 DIAMOND 20 sell
+- 5 DIAMOND 110 sell
