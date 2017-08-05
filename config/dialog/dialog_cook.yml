@@ -1,7 +1,5 @@
 id: 12
-
 name: '&9Ellie the Cook'
-
 click:
 - quest_start
 - quest_ask
@@ -9,8 +7,8 @@ click:
 
 options:
     helpme:
-		script:
-		- 0 out Well I am the cook so what do you want?
+	script:
+	- 0 out Well I am the cook so what do you want?
         yes:
             display: '&2I am looking for work'
             dialog: quest_start
@@ -34,7 +32,7 @@ dialogs:
         script:
         - 0 out No? Oh, That''s quite alright
         - 0 flag elliepassive add 2
-    
+	
     # The player wants a quest
     quest_start:
         script:
@@ -49,8 +47,7 @@ dialogs:
         - 50 item add _ellie_knife 1
         - 10 note Kitchen Knife was added to your inventory
         - 20 quest The cooks apperentice complete
-		
-    # This will trigger for 2 times when the player said 'no thanks' on the quest offer'
+	
     passive:
         script:
         - 0 flag elliepassive remove 1
