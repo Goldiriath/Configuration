@@ -3,16 +3,17 @@ name: '&9Ellie the Cook'
 click:
 - quest_start
 - quest_ask
+- quest_reset
 - passive
 
 options:
-    helpme:
+    lookingforthecook:
 	script:
 	- 0 out Well I am the cook so what do you want?
-        yes:
+        lookingforwork:
             display: '&2I am looking for work'
             dialog: quest_start
-        no:
+        lookingaround:
             display: '&4Oh nothing really, just looking around'
             dialog: quest_busy
 
@@ -24,16 +25,20 @@ dialogs:
         script:
         - 0 flag elliepassive add 3
         - 0 out Hey you there, what are you doing in my kitchen?
-		- 0 option lookingforthecook
-		- 0 option yourkitchen
-		- 0 option somethingtodo
-		
+	- 0 option lookingforthecook
+	- quest reset
+	- 0 option somethingtodo
+	
+    quest_reset:
+        script:
+        - 0 out Yes my kitchen... And if you have nothing useful to add to that statement you’d better be on your way.
+        - 0 flag elliepassive add 2
+	
     quest_busy:
         script:
         - 0 out No? Oh, That''s quite alright
         - 0 flag elliepassive add 2
 	
-    # The player wants a quest
     quest_start:
         script:
         - 0 out Great! Thanks so much for helping
