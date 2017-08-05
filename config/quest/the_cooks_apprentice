@@ -9,16 +9,11 @@ stages:
     entry:
         script: []
         triggers: []
-    wheat:
-        script: []
-        triggers: []
-    eggs:
-        script: []
-        triggers: []
-    dirk:
-        script: []
-        triggers: []
-    milk:
+    kitchen_start:
+        script: 
+        - '10 note You are now starting a quest!'
+        - '10 note quest The Cook's Apprentice start'   
+    entry:
         script: []
         triggers: []
     complete:
