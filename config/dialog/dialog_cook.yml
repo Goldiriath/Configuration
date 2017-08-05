@@ -1,0 +1,57 @@
+id: 12
+
+name: '&9Ellie the Cook'
+
+click:
+- quest_start
+- quest_ask
+- passive
+
+options:
+    helpme:
+		script:
+		- 0 out Well I am the cook so what do you want?
+        yes:
+            display: '&2I am looking for work'
+            dialog: quest_start
+        no:
+            display: '&4Oh nothing really, just looking around'
+            dialog: quest_busy
+
+dialogs:
+    quest_ask:
+        requirements:
+        - flag elliepassive == 0
+        - -quest the_cooks_apprentice started
+        script:
+        - 0 flag elliepassive add 3
+        - 0 out Hey you there, what are you doing in my kitchen?
+		- 0 option lookingforthecook
+		- 0 option yourkitchen
+		- 0 option somethingtodo
+		
+    quest_busy:
+        script:
+        - 0 out No? Oh, That''s quite alright
+        - 0 flag elliepassive add 2
+    
+    # The player wants a quest
+    quest_start:
+        script:
+        - 0 out Great! Thanks so much for helping
+        - 0 quest test entry
+        - 0 note You just started the cooks apperentice!
+        - 35 zap quest_items
+		
+    quest_thanks:
+        script:
+        - 0 out here is something for your troubles.
+        - 50 item add _ellie_knife 1
+        - 10 note Kitchen Knife was added to your inventory
+        - 20 quest The cooks apperentice complete
+		
+    # This will trigger for 2 times when the player said 'no thanks' on the quest offer'
+    passive:
+        script:
+        - 0 flag elliepassive remove 1
+        - 5 out Hello, I''m, Ellie, the cook!
