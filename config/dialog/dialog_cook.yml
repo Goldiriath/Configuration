@@ -26,7 +26,7 @@ dialogs:
         - 0 flag elliepassive add 3
         - 0 out Hey you there, what are you doing in my kitchen?
 	- 0 option lookingforthecook
-	- quest reset
+	- quest quest_reset
 	- 0 option somethingtodo
 	
     quest_reset:
