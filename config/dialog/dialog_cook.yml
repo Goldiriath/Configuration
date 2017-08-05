@@ -6,82 +6,82 @@ click:
 - quest_reset
 - passive
 options:
-	lookingforthecook:
-			display: 'Well I’m the cook so what do you want?’'
-			dialog: quest_lookingaround
-	lookingforwork:
+    lookingforthecook:
+            display: 'Well I’m the cook so what do you want?’'
+            dialog: quest_lookingaround
+    lookingforwork:
             display: '&2I am looking for work'
             dialog: quest_lookingaround2
-	lookingaround:
+    lookingaround:
             display: '&4Oh nothing really, just looking around'
             dialog: quest_busy
-	cookingshouldntbehard:
+    cookingshouldntbehard:
             display: '&4Cooking shouldn’t be to hard so lets get to the work.'
             dialog: quest_quizstart1
-	buthowwouldyouknow:
+    buthowwouldyouknow:
             display: '&4But how would you know if I’m good enough?'
             dialog: quest_quizstart2
-	yesmykitchen:
-			display: 'Yes my kitchen... And if you have nothing useful to add to that statement you’d better be on your way.'
+    yesmykitchen:
+            display: 'Yes my kitchen... And if you have nothing useful to add to that statement you’d better be on your way.'
             dialog: quest_reset
-	cookingseemsfun
-			display: 'Yeah sure, cooking seems fun'
+    cookingseemsfun
+            display: 'Yeah sure, cooking seems fun'
             dialog: quest_quizstart1
-	cookingnotonmenu	
-			display: 'Sorry I do not think cooking is on the menu today.'
+    cookingnotonmenu	
+            display: 'Sorry I do not think cooking is on the menu today.'
             dialog: quest_reset	
 dialogs:
     quest_ask:
-	requirements:
+    requirements:
         - flag elliepassive == 0
         - -quest the_cooks_apprentice started
     script:
         - 0 flag elliepassive add 3
-		- 0 out Hey you there, what are you doing in my kitchen?
-		- 0 option lookingforthecook
-		- quest quest_reset
-		- 0 quest_somethingtodo
+        - 0 out Hey you there, what are you doing in my kitchen?
+        - 0 option lookingforthecook
+        - quest quest_reset
+        - 0 quest_somethingtodo
     quest_lookingaround:
-	script:
-		- 0 option lookingforwork
-		- 0 option lookingaround
+    script:
+        - 0 option lookingforwork
+        - 0 option lookingaround
     quest_lookingaround2:
-	script:
-		- 0 out Well I do have some work that needs to be done, but before I can give you work I need to know if you are good enough.
-		- option cookingshouldntbehard
-		- option buthowwouldyouknow
-		- quest quest_start
+    script:
+        - 0 out Well I do have some work that needs to be done, but before I can give you work I need to know if you are good enough.
+        - option cookingshouldntbehard
+        - option buthowwouldyouknow
+        - quest quest_start
     quest_quizstart1:
-	script:
-		- 0 out It’s not that hard if your good at it, but I can’t say for sure that you are good. So you are going to have to complete a little quiz for me
+    script:
+        - 0 out It’s not that hard if your good at it, but I can’t say for sure that you are good. So you are going to have to complete a little quiz for me
     quest_quizstart2:
-	script:
-		- 0 out I don’t, so I’m going to give you a little cooking quiz to see how good you are.
+    script:
+        - 0 out I don’t, so I’m going to give you a little cooking quiz to see how good you are.
     quest_somethingtodo:
-	script:
-		- option cookingseemsfun
-		- option cookingnotonmenu
+    script:
+        - option cookingseemsfun
+        - option cookingnotonmenu
     quest_reset:
-	cript:
-		- 0 out I'll look for someone else to do the job then.
+    cript:
+        - 0 out I'll look for someone else to do the job then.
         - 0 flag elliepassive add 2
     quest_busy:
-	script:
+    script:
         - 0 out No? Oh, That''s quite alright
         - 0 flag elliepassive add 2
     quest_start:
-	script:
+    script:
         - 0 out Great! Thanks so much for helping
         - 0 quest test entry
         - 0 note You just started the cooks apperentice!
         - 35 zap quest_items
     quest_thanks:
-	script:
+    script:
         - 0 out here is something for your troubles.
         - 50 item add _ellie_knife 1
         - 10 note Kitchen Knife was added to your inventory
         - 20 quest The cooks apperentice complete
     passive:
-	script:
+    script:
         - 0 flag elliepassive remove 1
         - 5 out Hello, I''m, Ellie, the cook!
