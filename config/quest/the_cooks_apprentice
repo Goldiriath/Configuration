@@ -1,0 +1,29 @@
+meta:
+    name: The cook's apprentice
+    description: |
+        The cook's apprentice
+        
+requirements:
+triggers:
+stages:
+    entry:
+        script: []
+        triggers: []
+    wheat:
+        script: []
+        triggers: []
+    eggs:
+        script: []
+        triggers: []
+    dirk:
+        script: []
+        triggers: []
+    milk:
+        script: []
+        triggers: []
+    complete:
+        script: []
+        triggers: []
+    cancel:
+        script: []
+triggers: []
