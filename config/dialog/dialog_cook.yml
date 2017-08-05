@@ -10,19 +10,19 @@ options:
     lookingforthecook:
 	script:
 	- 0 out Well I am the cook so what do you want?
-        lookingforwork:
+	lookingforwork:
             display: '&2I am looking for work'
             dialog: quest_start
-        lookingaround:
+	lookingaround:
             display: '&4Oh nothing really, just looking around'
             dialog: quest_busy
 
 dialogs:
     quest_ask:
-        requirements:
+	requirements:
         - flag elliepassive == 0
         - -quest the_cooks_apprentice started
-        script:
+	script:
         - 0 flag elliepassive add 3
         - 0 out Hey you there, what are you doing in my kitchen?
 	- 0 option lookingforthecook
@@ -30,30 +30,30 @@ dialogs:
 	- 0 option somethingtodo
 	
     quest_reset:
-        script:
+	script:
         - 0 out Yes my kitchen... And if you have nothing useful to add to that statement you’d better be on your way.
         - 0 flag elliepassive add 2
 	
     quest_busy:
-        script:
+	script:
         - 0 out No? Oh, That''s quite alright
         - 0 flag elliepassive add 2
 	
     quest_start:
-        script:
+	script:
         - 0 out Great! Thanks so much for helping
         - 0 quest test entry
         - 0 note You just started the cooks apperentice!
         - 35 zap quest_items
 		
     quest_thanks:
-        script:
+	script:
         - 0 out here is something for your troubles.
         - 50 item add _ellie_knife 1
         - 10 note Kitchen Knife was added to your inventory
         - 20 quest The cooks apperentice complete
 	
     passive:
-        script:
+	script:
         - 0 flag elliepassive remove 1
         - 5 out Hello, I''m, Ellie, the cook!
