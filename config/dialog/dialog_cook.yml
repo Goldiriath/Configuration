@@ -3,6 +3,11 @@ name: '&9Ellie the Cook'
 click:
 - quest_start
 - quest_ask
+- quest_lookingaround
+- quest_lookingaround2
+- quest_quizstart1
+- quest_quizstart2
+- quest_somethingtodo
 - quest_reset
 - passive
 options:
