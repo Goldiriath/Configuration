@@ -102,74 +102,73 @@ dialogs:
     script:
         - 0 out I don’t, so I’m going to give you a little cooking quiz to see how good you are.
         - 0 out Are you ready for my questions?
-		- quest_quizstartquestions
+        - quest_quizstartquestions
     quest_quizstartquestions:
     script:
-		- option quizstartyes
-		- option quizstartno
-		
+        - option quizstartyes
+        - option quizstartno
     quest_quizsection1:
     script:
         - 0 out Well Let's get started then.
-		- 0 out First question: I have an egg, two buckets of milk and three wheat.
-		- 0 out What do I need to finish my cake?
-		- option quizquestion1a
-		- option quizquestion1b
-		- option quizquestion1c
+        - 0 out First question: I have an egg, two buckets of milk and three wheat.
+        - 0 out What do I need to finish my cake?
+        - option quizquestion1a
+        - option quizquestion1b
+        - option quizquestion1c
     quest_quizanswer1a:
     script:
-		- 0 out I mostly bake my cakes using: One egg, three buckets of milk, three pieces of wheat and 2 pieces of sugar, but that recipe could work..
-		- quest quest_quizsection2
-		- flag cook_quiz add 0
+        - 0 out I mostly bake my cakes using: One egg, three buckets of milk, three pieces of wheat and 2 pieces of sugar, but that recipe could work..
+        - quest quest_quizsection2
+        - flag cook_quiz add 0
     quest_quizanswer1b:
     script:
-		- 0 out I don’t think that I would ever want to taste that cake...
-		- quest quest_quizsection2
-		- flag cook_quiz add 0
+        - 0 out I don’t think that I would ever want to taste that cake...
+        - quest quest_quizsection2
+        - flag cook_quiz add 0
     quest_quizanswer1c:
     script:
-		- 0 out Next question wont be so easy, but good job.
-		- quest quest_quizsection2
-		- flag cook_quiz add 1
+        - 0 out Next question wont be so easy, but good job.
+        - quest quest_quizsection2
+        - flag cook_quiz add 1
     quest_quizsection2:
     script:
         - 0 out Is there an ingredient that is used in as many recipes as wheat?
-		- option quizquestion2a
-		- option quizquestion2b
+        - option quizquestion2a
+        - option quizquestion2b
     quest_quizanswer2a:
     script:
-		- 0 out I do not know about what recipes your talking but I’m talking about cooking here, and for cooking wheat is the only ingredient that can be used for 3 different things
-		- quest quest_quizsection3
-		- flag cook_quiz add 0
+        - 0 out I do not know about what recipes your talking but I’m talking about cooking here, and for cooking wheat is the only ingredient that can be used for 3 different things
+        - quest quest_quizsection3
+        - flag cook_quiz add 0
     quest_quizanswer2b:
     script:
-		- 0 out Well well, You at least have some cooking experience.
-		- quest quest_quizsection3
-		- flag cook_quiz add 1
+        - 0 out Well well, You at least have some cooking experience.
+        - quest quest_quizsection3
+        - flag cook_quiz add 1
     quest_quizsection3:
     script:
         - 0 out Final question: ‘what do I need to make pumpkin pie?
-		- option quizquestion3a
-		- option quizquestion3b
-		- option quizquestion3c
+        - option quizquestion3a
+        - option quizquestion3b
+        - option quizquestion3c
     quest_quizanswer3a:
     script:
-		- 0 out Correct, well done.
-		- flag cook_quiz add 1
-		- quiz_wrapup
+        - 0 out Correct, well done.
+        - flag cook_quiz add 1
+        - quiz_wrapup
     quest_quizanswer3b:
     script:
-		- 0 out Your messing up cake and pumpkin pie.
-		- flag cook_quiz add 0
-		- quiz_wrapup
+        - 0 out Your messing up cake and pumpkin pie.
+        - flag cook_quiz add 0
+        - quiz_wrapup
     quest_quizanswer3c:
     script:
-		- 0 out I would remove the milk and add some sugar..
-		- flag cook_quiz add 0
-		- quiz_wrapup
+        - 0 out I would remove the milk and add some sugar..
+        - flag cook_quiz add 0
+        - quiz_wrapup
     quiz_wrapup:
     script:
-		- 0 out Now lets look at your result.
+        - 0 out Now lets look at your result.
     quest_resetquiz:
     script:
         - 0 out Okay, but don’t take to long.
