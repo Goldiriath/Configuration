@@ -29,12 +29,45 @@ options:
     yesmykitchen:
             display: 'Yes my kitchen... And if you have nothing useful to add to that statement you’d better be on your way.'
             dialog: quest_reset
-    cookingseemsfun
+    cookingseemsfun:
             display: 'Yeah sure, cooking seems fun'
             dialog: quest_quizstart1
-    cookingnotonmenu	
+    cookingnotonmenu:
             display: 'Sorry I do not think cooking is on the menu today.'
             dialog: quest_reset	
+    quizstartyes:
+            display: 'Yes of course'
+            dialog: quest_quizsection1	
+    quizstartno:
+            display: 'No I need some time to prepare.'
+            dialog: quest_resetquiz
+    quizquestion1a:
+            display: 'One sugar, one egg and a bucket of milk.'
+            dialog: quizanswer1a
+    quizquestiona1b:
+            display: 'Three pieces of sugar.'
+            dialog: quizanswer1b
+    quizsquestiona1c:
+            display: 'Two sugar and a bucket of milk'
+            dialog: quizanswer1c
+    quizquestion2a:
+            display: 'Yes'
+            dialog: quizanswer2a
+    quizquestion2b:
+            display: 'No.'
+            dialog: quizanswer2b
+    quizquestion3a:
+            display: 'Sugar, eggs and a pumpkin.'
+            dialog: quizanswer3a
+    quizquestion3b:
+            display: 'Sugar, eggs, three pumpkins and three buckets of milk'
+            dialog: quizanswer3b
+    quizquestion3c:
+            display: 'Eggs, milk and pumpkin.'
+            dialog: quizanswer3c	
+    quizanswers0:
+        requirements:
+        - flag cook_quiz == 0
 dialogs:
     quest_ask:
     requirements:
@@ -56,18 +89,92 @@ dialogs:
         - option cookingshouldntbehard
         - option buthowwouldyouknow
         - quest quest_start
-    quest_quizstart1:
-    script:
-        - 0 out It’s not that hard if your good at it, but I can’t say for sure that you are good. So you are going to have to complete a little quiz for me
-    quest_quizstart2:
-    script:
-        - 0 out I don’t, so I’m going to give you a little cooking quiz to see how good you are.
     quest_somethingtodo:
     script:
         - option cookingseemsfun
         - option cookingnotonmenu
+    quest_quizstart1:
+    script:
+        - 0 out It’s not that hard if your good at it, but I can’t say for sure that you are good. So you are going to have to complete a little quiz for me
+        - 0 out Are you ready for my questions?
+		- quest_quizstartquestions
+    quest_quizstart2:
+    script:
+        - 0 out I don’t, so I’m going to give you a little cooking quiz to see how good you are.
+        - 0 out Are you ready for my questions?
+		- quest_quizstartquestions
+    quest_quizstartquestions:
+    script:
+		- option quizstartyes
+		- option quizstartno
+		
+    quest_quizsection1:
+    script:
+        - 0 out Well Let's get started then.
+		- 0 out First question: I have an egg, two buckets of milk and three wheat.
+		- 0 out What do I need to finish my cake?
+		- option quizquestion1a
+		- option quizquestion1b
+		- option quizquestion1c
+    quest_quizanswer1a:
+    script:
+		- 0 out I mostly bake my cakes using: One egg, three buckets of milk, three pieces of wheat and 2 pieces of sugar, but that recipe could work..
+		- quest quest_quizsection2
+		- flag cook_quiz add 0
+    quest_quizanswer1b:
+    script:
+		- 0 out I don’t think that I would ever want to taste that cake...
+		- quest quest_quizsection2
+		- flag cook_quiz add 0
+    quest_quizanswer1c:
+    script:
+		- 0 out Next question wont be so easy, but good job.
+		- quest quest_quizsection2
+		- flag cook_quiz add 1
+    quest_quizsection2:
+    script:
+        - 0 out Is there an ingredient that is used in as many recipes as wheat?
+		- option quizquestion2a
+		- option quizquestion2b
+    quest_quizanswer2a:
+    script:
+		- 0 out I do not know about what recipes your talking but I’m talking about cooking here, and for cooking wheat is the only ingredient that can be used for 3 different things
+		- quest quest_quizsection3
+		- flag cook_quiz add 0
+    quest_quizanswer2b:
+    script:
+		- 0 out Well well, You at least have some cooking experience.
+		- quest quest_quizsection3
+		- flag cook_quiz add 1
+    quest_quizsection3:
+    script:
+        - 0 out Final question: ‘what do I need to make pumpkin pie?
+		- option quizquestion3a
+		- option quizquestion3b
+		- option quizquestion3c
+    quest_quizanswer3a:
+    script:
+		- 0 out Correct, well done.
+		- flag cook_quiz add 1
+		- quiz_wrapup
+    quest_quizanswer3b:
+    script:
+		- 0 out Your messing up cake and pumpkin pie.
+		- flag cook_quiz add 0
+		- quiz_wrapup
+    quest_quizanswer3c:
+    script:
+		- 0 out I would remove the milk and add some sugar..
+		- flag cook_quiz add 0
+		- quiz_wrapup
+    quiz_wrapup:
+    script:
+		- 0 out Now lets look at your result.
+    quest_resetquiz:
+    script:
+        - 0 out Okay, but don’t take to long.
     quest_reset:
-    cript:
+    script:
         - 0 out I'll look for someone else to do the job then.
         - 0 flag elliepassive add 2
     quest_busy:
