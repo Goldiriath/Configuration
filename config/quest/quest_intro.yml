@@ -16,7 +16,7 @@ stages:
     ground_flour_start:
         script: 
         - 0 out innkeeper Oh, good you're awake,
-        - 20 out innkeeper come and talk to me.
+        - 20 out innkeeper Come and talk to me.
         - 0 zap ground_flour_stasis
     ground_flour_stasis:
         triggers:
