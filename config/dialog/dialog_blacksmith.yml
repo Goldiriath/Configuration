@@ -99,5 +99,5 @@ dialogs:
         - 0 quest intro complete
     conversation:
         script:
-            - 0 out I'm sorry I'm a little busy. Please come back later
-            
+            - 0 out I'm sorry I'm a little busy. Please come back later.
+

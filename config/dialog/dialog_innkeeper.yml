@@ -84,4 +84,4 @@ dialogs:
             - quest intro gear
         script:
             - 0 out Run along to the blacksmith now
-            
+
