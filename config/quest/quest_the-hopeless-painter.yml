@@ -1,0 +1,16 @@
+meta:
+    name: the hopeless painter
+    description: |
+        Pierre needs some help getting some "die"
+        
+requirements:
+    - quest complete into
+triggers:
+
+stages:
+    entry:
+    complete:
+    cancel:
+    timeout:
+    timeout_red:
+    orange:

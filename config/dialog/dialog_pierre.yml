@@ -1,0 +1,119 @@
+# citizens ID
+id: 2414
+
+#npc name
+name: pierre
+
+click:
+    - Yes_dyered
+    - No_dyered
+    - Hello2
+    - Initial_hello
+options:
+    Greeting_initial:
+        Umm:
+            display: &2Umm, hello
+            dialog: response_hello
+        Sure:
+            display: &2I'll help
+            dialog: response_sure
+        No:
+            display: &2No sorry
+            dialog: response_no
+    Greeting_secondary:
+        Friendly:
+            display: &2no sorry
+            dialog: response_no
+        Sure:
+            display: &2I'll help
+            dialog: response_sure
+    dye2:
+        thanks:
+            display: &2thank me
+            dialog: response_thank
+        return:
+            display: &2you told me to come back
+            dialog: response_return
+    orange_dye:
+        reward:
+            display: &2reward please
+            dialog:  response_reward
+        sure:
+            display: &2sure
+            dialog: response_sure2
+
+dialogs:
+    Initial_hello:
+        requirements:
+        script:
+            - 0 out Oh hello! You dont know how 'appy I am to see you right now.
+            - 5 out Why you ask, I am Pièrre le famous painter and I need some die.
+            - 5 out Non not any kind of die mind you, but some rouge die should do it.
+            - 5 option Greeting_initial
+    response_hello:
+        requirements:
+        script:
+            - 5 me Umm hello to you too I guess.
+            - 5 out Oui Oui 'ello 'ello, and now fly out and get le die
+            - 5 option Greeting_secondary
+    response_sure:
+        requirements:
+        script:
+            - 0 me Eh sure I’ll get you some ‘rouge die.
+            - 5 out Perfect, now be on your way.
+            - quest the-hopeless-painter entry
+    response_no:
+        requirements:
+        script:
+            - 0 me No sorry I dont have the time to help you.
+            - 5 out Fine I’ll search for someone else that can save me and my grande painting.
+    No_dyered:
+        requirements:
+            - quest the-hopeless-painter entry
+        script:
+            - 0 out And have you got le rouge die?
+            - 5 out Non?
+            - 10 out Then be on your way.
+    Yes_dyered:
+        requirements:
+            - quest the-hopeless-painter entry
+            - item dye 1
+        script:
+            - 0 out And have you got le rouge die?
+            - 5 out Oui?
+            - 10 out Perfect, but non this is, this is.. This is le wrong colour!
+            - 20 out How can a painter like myself live with such a colour?
+            - 25 out Hmm, return in a day I need time to think.
+            - quest the-hopeless-painter timeout_red
+    Hello2:
+        requirements:
+            - quest the-hopeless-painter orange
+        script:
+            - 0 out Hmm, you again?
+            - 5 out Remind me why you’re here?
+            - 10 option dye2
+    response_thank:
+        requirements:
+        script:
+            - 0 me I brought you the ‘die’ yesterday and I at least want a word of thanks.
+            - 5 out Oh my, sorry for that I totaly forgot to thank you. Take this as a reward.
+            - 10 quest the-hopeless-painter complete
+    response_return:
+        requirements:
+        script:
+            - 0 me I brought you the ‘die’ yesterday and you said that you needed a day to think.
+            - 5 out Oh my, I totaly forgot but I am so happy to have u back.
+            - 10 out I have a small favor to ask of u.
+            - 15 out Would u be so kind as to getting me some more die? Not any kind of die mind u but ‘orange die’ should do.
+            - 20 option orange_dye
+    response_reward:
+        requirements:
+        script:
+            - 0 me umm I came here expecting some kind of reward, not really wishing to perform another task.
+            - 5 out Hmm, not what I was expecting but u helped me non le less, so here take this reward as tanks.
+            - 10 quest the-hopeless-painter complete
+    response_sure2:
+        requirements:
+        script:
+            - 0 me Sure I’ll get you some ‘Orange die
+            - 10 out Perfect now be on your way
