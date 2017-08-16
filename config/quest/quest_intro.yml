@@ -3,20 +3,20 @@ meta:
     description: |
         this is the first quest in goldiriath
         
-requirements:
-triggers:
+requirements: []
+triggers: []
 
 stages:
     entry:
         script: 
-        - note You wake up, but you do not remember how you got here. Maybe you should have a look around.
+        - 0 note You wake up, but you do not remember how you got here. Maybe you should have a look around.
         triggers:
             ground_flour_start:
                 - location goldiriath:1362:114:1028 2
     ground_flour_start:
         script: 
-        - '0 out innkeeper innkeeper_ground_floor Oh, good you''re awake,'
-        - '20 out innkeeper innkeeper_ground_floor2 come and talk to me.'
+        - 0 out innkeeper Oh, good you're awake,
+        - 20 out innkeeper Come and talk to me.
         - 0 zap ground_flour_stasis
     ground_flour_stasis:
         triggers:
@@ -24,11 +24,16 @@ stages:
                 - location goldiriath:1368:114:1038 3
     try_to_leave:
         script:
-        - 0 command /tp <player> 1362 114 1028
-        - 5 out innkeeper innkeeper_try_to_leave Come talk to me before leaving
+        - 0 command tp <player> 1362 114 1028
+        - 5 out innkeeper Come talk to me before leaving
         - 0 zap ground_flour_stasis
-    hay:      
+    hay:
+        script: []    
     gear:
+        script: []
     complete:
         script:
-       - 0 xp add 50
+         - 0 xp add 50
+         - 0 note quest complete, congratulations
+    cancel:
+        script: []

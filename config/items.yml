@@ -43,7 +43,7 @@ ragged_shirt:
     tier: BATTERED
 shabby_pants:
     name: 'Shabby Pants'
-    type: LEATHER_LEGGINS
+    type: LEATHER_LEGGINGS
     data: 0
     level: 1
     tier: BATTERED
@@ -70,7 +70,7 @@ light_leather_chestplate_4:
     tier: NORMAL
 light_leather_leggins_4:
     name: 'Light Leather Pants'
-    type: LEATHER_LEGGINS
+    type: LEATHER_LEGGINGS
     data: 0
     level: 4
     tier: NORMAL
@@ -97,7 +97,7 @@ light_leather_chestplate_7:
     tier: NORMAL
 light_leather_leggins_7:
     name: 'Light Leather Pants'
-    type: LEATHER_LEGGINS
+    type: LEATHER_LEGGINGS
     data: 0
     level: 7
     tier: NORMAL
@@ -112,7 +112,7 @@ light_leather_boots_7:
 #
 blunt_sword:
     name: 'Blunt Sword'
-    type: WOODEN_SWORD
+    type: WOOD_SWORD
     data: 0
     level: 1
     tier: BATTERED
@@ -124,7 +124,7 @@ stick_and_string:
     tier: BATTERED
 kitchen_knife:
     name: 'Kitchen Knife'
-    type: SCHEARS
+    type: SHEARS
     data: 0
     level: 1
     tier: BATTERED
@@ -139,7 +139,7 @@ pointy_stick:
 #
 wooden_sword_4:
     name: 'Wooden Sword'
-    type: WOODEN_SWORD
+    type: WOOD_SWORD
     data: 0
     level: 4
     tier: NORMAL
@@ -151,7 +151,7 @@ short_bow_4:
     tier: NORMAL
 wooden_knife_4:
     name: 'Wooden Knife'
-    type: SCHEARS
+    type: SHEARS
     data: 0
     level: 4
     tier: NORMAL
@@ -166,7 +166,7 @@ wood_wand_4:
 #
 wooden_sword_7:
     name: 'Wooden Sword'
-    type: WOODEN_SWORD
+    type: WOOD_SWORD
     data: 0
     level: 7
     tier: NORMAL
@@ -178,7 +178,7 @@ short_bow_7:
     tier: NORMAL
 wooden_knife_7:
     name: 'Wooden Knife'
-    type: SCHEARS
+    type: SHEARS
     data: 0
     level: 7
     tier: NORMAL
