@@ -3,14 +3,16 @@ meta:
     description: |
         Pierre needs some help getting some "die"
         
-requirements:
-    - quest intro complete
-triggers:
+requirements: []
+triggers: []
 
 stages:
-    entry:  
+    entry:
+        script: []
     complete:
+        script: []
     cancel:
+        script: []
     timeout:
         script:
             - 20 zap cancel
@@ -21,3 +23,4 @@ stages:
         script:
             0 note I think pierre should be done thinking by now
     orange_getdye:
+        script: []

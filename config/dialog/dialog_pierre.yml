@@ -1,82 +1,83 @@
 # citizens ID
-id: 3
+id: 4
 
 #npc name
-name: pierre
+name: Pierre
 
 click:
+    initial_hello
     orange
     no_orange
-    Hello2
-    Yes_dyered
-    No_dyered
-    Initial_hello
+    hello2
+    yes_dyered
+    no_dyered
 options:
-    Greeting_initial:
-        Umm:
-            display: &2Umm, hello
+    greeting_initial:
+        umm:
+            display: '&2Umm, hello'
             dialog: response_hello
-        Sure:
-            display: &2I'll help
+        sure:
+            display: '&2I will help'
             dialog: response_sure
-        No:
-            display: &2No sorry
+        no:
+            display: '&2No sorry'
             dialog: response_no
-    Greeting_secondary:
-        Friendly:
-            display: &2no sorry
+    greeting_secondary:
+        friendly:
+            display: '&2no sorry'
             dialog: response_no
-        Sure:
-            display: &2I'll help
+        sure:
+            display: '&2I will help'
             dialog: response_sure
     dye2:
         thanks:
-            display: &2thank me
+            display: '&2thank me'
             dialog: response_thank
         return:
-            display: &2you told me to come back
+            display: '&2you told me to come back'
             dialog: response_return
     orange_dye:
         reward:
-            display: &2reward please
-            dialog:  response_reward
+            display: '&2reward please'
+            dialog: response_reward
         sure:
-            display: &2sure
+            display: '&2sure'
             dialog: response_sure2
 
 dialogs:
-    Initial_hello:
-        requirements:
+    initial_hello:            
         script:
+            - 0 command /npc list
+            - 0 flag Pierre_conversation add 1
             - 0 out Oh hello! You dont know how 'appy I am to see you right now.
             - 5 out Why you ask, I am Pièrre le famous painter and I need some die.
             - 5 out Non not any kind of die mind you, but some rouge die should do it.
-            - 5 option Greeting_initial
+            - 5 option greeting_initial
     response_hello:
         requirements:
         script:
             - 5 me Umm hello to you too I guess.
             - 5 out Oui Oui 'ello 'ello, and now fly out and get le die
-            - 5 option Greeting_secondary
+            - 5 option greeting_secondary
     response_sure:
         requirements:
         script:
             - 0 me Eh sure I’ll get you some ‘rouge die.
             - 5 out Perfect, now be on your way.
-            - quest the-hopeless-painter entry
+            - 0 quest the-hopeless-painter entry
     response_no:
         requirements:
         script:
             - 0 me No sorry I dont have the time to help you.
             - 5 out Fine I’ll search for someone else that can save me and my grande painting.
-    No_dyered:
+    no_dyered:
         requirements:
             - quest the-hopeless-painter entry
         script:
             - 0 out And have you got le rouge die?
             - 5 out Non?
             - 10 out Then be on your way.
-    Yes_dyered:
+    yes_dyered:
         requirements:
             - quest the-hopeless-painter entry
             - item dye 1
@@ -86,8 +87,8 @@ dialogs:
             - 10 out Perfect, but non this is, this is.. This is le wrong colour!
             - 20 out How can a painter like myself live with such a colour?
             - 25 out Hmm, return in a day I need time to think.
-            - quest the-hopeless-painter timeout_red
-    Hello2:
+            - 0 quest the-hopeless-painter timeout_red
+    hello2:
         requirements:
             - quest the-hopeless-painter orange
         script:
@@ -125,7 +126,7 @@ dialogs:
             - item dye 1 
         script:
             - 0 out And have u got le orange die?
-            - 5  out Oui?
+            - 5 out Oui?
             - 10 out Perfect, but non this is, this is...
             - 15 out This is better than I could have ever hoped it would be.
             - 15 out Thank you thank you very much for helping me get the perfect die.
