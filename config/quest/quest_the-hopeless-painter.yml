@@ -4,13 +4,20 @@ meta:
         Pierre needs some help getting some "die"
         
 requirements:
-    - quest complete into
+    - quest intro complete
 triggers:
 
 stages:
-    entry:
+    entry:  
     complete:
     cancel:
     timeout:
+        script:
+            - 20 zap cancel
     timeout_red:
+        script:
+            - 20 zap orange
     orange:
+        script:
+            0 note I think pierre should be done thinking by now
+    orange_getdye:

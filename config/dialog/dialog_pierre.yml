@@ -1,14 +1,16 @@
 # citizens ID
-id: 2414
+id: 3
 
 #npc name
 name: pierre
 
 click:
-    - Yes_dyered
-    - No_dyered
-    - Hello2
-    - Initial_hello
+    orange
+    no_orange
+    Hello2
+    Yes_dyered
+    No_dyered
+    Initial_hello
 options:
     Greeting_initial:
         Umm:
@@ -79,7 +81,7 @@ dialogs:
             - quest the-hopeless-painter entry
             - item dye 1
         script:
-            - 0 out And have you got le rouge die?
+            - 0 out And 'ave you got le rouge die?
             - 5 out Oui?
             - 10 out Perfect, but non this is, this is.. This is le wrong colour!
             - 20 out How can a painter like myself live with such a colour?
@@ -117,3 +119,23 @@ dialogs:
         script:
             - 0 me Sure I’ll get you some ‘Orange die
             - 10 out Perfect now be on your way
+    orange:
+        requirements:
+            - quest the-hopeless-painter orange_getdye
+            - item dye 1 
+        script:
+            - 0 out And have u got le orange die?
+            - 5  out Oui?
+            - 10 out Perfect, but non this is, this is...
+            - 15 out This is better than I could have ever hoped it would be.
+            - 15 out Thank you thank you very much for helping me get the perfect die.
+            - 15 out Here take this as a reward, I hope its enough to repay your kindness
+            - 0 quest the-hopeless-painter complete
+    no_orange:
+        requirements:
+            - quest the-hopeless-painter orange_getdye
+        script:
+            - 0 out And have u got le orange die?
+            - 5 out Non?
+            - 10 out Then be on your way.
+            
