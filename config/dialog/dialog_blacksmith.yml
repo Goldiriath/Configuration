@@ -1,5 +1,5 @@
 # citiznes ID
-id: 15
+id: 2
 
 # NPC name
 name: '&6Blacksmith'
@@ -51,49 +51,53 @@ dialogs:
         - quest intro gear
         - flag innkeeper_dislike > 0
         script:
-        - '0 out blacksmith_hello  Hello there, what can i do for you?'
+        - 0 out Hello there, what can I do for you?
         - 5 option reason_dislike
     gear:
         requirements: 
         - quest intro gear
         script:
-        - '0 out blacksmith_hello  Hello there, what can i do for you?'
+        - 0 out Hello there, what can I do for you?
         - 5 option reason
     response_innkeeper_dislike:
         script:
-        - '0 me The innkeeper sent me.'
-        - '20 out blacksmith_innkeeper And I think that means that you are looking for some gear?'
+        - 0 me The innkeeper sent me.
+        - 20 out And I think that means that you are looking for some gear?
         - 0 option looking_dislike   
     response_innkeeper:
         script:
-        - '0 me The innkeeper sent me.'
-        - '20 out blacksmith_innkeeper And I think that means that you are looking for some gear?'
+        - 0 me The innkeeper sent me.
+        - 20 out And I think that means that you are looking for some gear?
         - 0 option looking   
     response_sarcastic_dislike:
         script:
-        - '0 me what else?'
-        - '20 out response_sarcastic_dislike I can see why the Innkeeper doesn''t like you, but I have some gear left over for people such as yourself...'
+        - 0 me What else?
+        - 20 out I can see why the innkeeper doesn't like you, but I have some gear left over for people such as yourself...
         - 0 zap dislike_gear
     response_sarcastic:
         script:
-        - '0 me what else?'
-        - '20 out response_sarcastic Hmmm, I would appreciate it if you could be a little less sarcastic, but I have some gear left over for people such as yourself...'
+        - 0 me What else?
+        - 20 out Hmmm, I would appreciate it if you could be a little less sarcastic, but I have some gear left over for people such as yourself...
         - 0 zap dislike_gear
     dislike_gear:
         script:
-        - '20 out dislike_gear I found a crappy bow and a rusty sword, you can chose which piece of trash you want.'
+        - 20 out I found a old bow and a rusty sword, you can chose which piece of trash you want.
         - 0 option gear_choice
     response_gear:
         script: 
-        - '0 out like_gear  I think that I might have some gear that you can take. I found a bow and an old sword, you can chose which of those you want.'
+        - 0 out I think that I might have some gear that you can take. I found a bow and an old sword, you can chose which of those you want.
         - 0 option gear_choice
     response_bow:
         script:
-        - '0 me I would prefer the bow'
-        - 0 item add _default_bow
+        - 0 me I would prefer the bow.
+        - 0 item add _stick_and_string 1
         - 0 quest intro complete
     response_sword:
         script:
-        - '0 me I would prefer the sword'
-        - 0 item add _battered_wooden_sword
+        - 0 me I would prefer the sword.
+        - 0 item add _blunt_sword 1
         - 0 quest intro complete
+    conversation:
+        script:
+            - 0 out I'm sorry I'm a little busy. Please come back later.
+
